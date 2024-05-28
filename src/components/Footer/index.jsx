@@ -21,6 +21,7 @@ const Footer = () => {
                         Reserved.
                     </span>
                 </div>
+                <div className="social-icons">
                 <Link
                     to="https://instagram"
                     target="_blank"
@@ -42,7 +43,7 @@ const Footer = () => {
                 >
                     <FontAwesomeIcon icon={faYoutube} />
                 </Link>
-
+                </div>
             </div>
         </footer>
     );

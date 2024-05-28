@@ -1,0 +1,22 @@
+.footer {
+  background-color: #23395B;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 2rem;
+  padding: 1rem 1rem;
+}
+
+.item3,
+.item4,
+.item5 {
+  color: white;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  gap: 20px;
+}
