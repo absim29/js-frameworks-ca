@@ -15,22 +15,29 @@ function Home() {
   }
   console.log(data)
   return (
+    <>
+    <h1>Welcome to our store</h1>
     <div className="mainContainer">
       {data.map((item) => (
         <div key={item.id} className="box">
           <div className="card">
+            <div>
             <img src={item.image.url} alt={item.image.alt || item.title} className="image" />
             <h2>{item.title}</h2>
+            </div>
+            <div>
             <p>{item.description}</p>
             <p>Price: ${item.price.toFixed(2)}</p>
             <p>Discounted Price: ${item.discountedPrice.toFixed(2)}</p>
-          </div>
           <Link to={`/post/${item.id}`}>
             <button className="btn">View</button>
           </Link>
+          </div>
+          </div>
         </div>
       ))}
     </div>
+    </>
   );
 }
 
