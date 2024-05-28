@@ -53,8 +53,8 @@ function Post() {
             </div>
           )}
         </div>
+            <button className="btn">Add to cart</button>
       </div>
-
     </div>
   );
 }
