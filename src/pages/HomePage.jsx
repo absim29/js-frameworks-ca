@@ -1,11 +1,11 @@
+import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 
 const url = 'https://v2.api.noroff.dev/online-shop';
 
 
-function App() {
+function Home() {
   const { data, isError, isLoading } = useFetch(url);
-
   if (isLoading) {
     return <div>Loading posts...</div>;
   }
@@ -13,11 +13,10 @@ function App() {
   if (isError) {
     return <div>Error loading data</div>;
   }
-
+  console.log(data)
   return (
     <div className="mainContainer">
       {data.map((item) => (
-
         <div key={item.id} className="box">
           <div className="card">
             <img src={item.image.url} alt={item.image.alt || item.title} className="image" />
@@ -26,12 +25,13 @@ function App() {
             <p>Price: ${item.price.toFixed(2)}</p>
             <p>Discounted Price: ${item.discountedPrice.toFixed(2)}</p>
           </div>
-          <button className="btn">View</button>
+          <Link to={`/post/${item.id}`}>
+            <button className="btn">View</button>
+          </Link>
         </div>
-
       ))}
     </div>
   );
 }
 
-export default App;
+export default Home;
