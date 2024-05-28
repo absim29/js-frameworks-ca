@@ -1,65 +1,105 @@
 import React, { useState } from 'react';
+import styles from '../styles/ContactForm.module.scss';
 
-function App() {
-  const [fullName, setFullName] = useState('');
-  const [subject, setSubject] = useState('');
-  const [textBody, setTextBody] = useState('');
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    subject: '',
+    email: '',
+    body: ''
+  });
 
-  function onFormSubmit(event) {
-    event.preventDefault();
-    const body = {
-      fullName,
-      subject,
-      textBody,
-    };
+  const [errors, setErrors] = useState({});
 
-    fetch('http://www.example.com', {
-      method: 'POST',
-      body: JSON.stringify(body),
+  const validate = () => {
+    const errors = {};
+    if (formData.fullName.length < 3) {
+      errors.fullName = 'Full name must be at least 3 characters';
+    }
+    if (formData.subject.length < 3) {
+      errors.subject = 'Subject must be at least 3 characters';
+    }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email)) {
+      errors.email = 'Email must be a valid email address';
+    }
+    if (formData.body.length < 3) {
+      errors.body = 'Body must be at least 3 characters';
+    }
+    return errors;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
     });
-  }
+  };
 
-  function onTextInputChange(event) {
-    const value = event.target.value;
-    if (event.target.name === 'name') {
-      setFullName(value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = validate();
+    setErrors(errors);
+    if (Object.keys(errors).length === 0) {
+      // Submit the form
+      console.log('Form submitted', formData);
     }
-    if (event.target.name === 'subject') {
-      setSubject(value);
-    }
-    if (event.target.name === 'textBody') {
-      setTextBody(value);
-    }
-  }
+  };
 
   return (
-    <div>
-      <form onSubmit={onFormSubmit}>
-        <label htmlFor="name">Full name</label>
+    <>
+    <h1>Contact us</h1>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <div>
+        <label>Full Name</label>
         <input
-          name="name"
-          value={fullName}
-          placeholder="Your full name"
-          onChange={onTextInputChange}
+          type="text"
+          name="fullName"
+          value={formData.fullName}
+          onChange={handleChange}
+          className={errors.fullName ? styles.error : ''}
         />
-        <label htmlFor="subject">Subject</label>
+        {errors.fullName && <p>{errors.fullName}</p>}
+      </div>
+      <div>
+        <label>Subject</label>
         <input
+          type="text"
           name="subject"
-          value={subject}
-          placeholder="Subject"
-          onChange={onTextInputChange}
+          value={formData.subject}
+          onChange={handleChange}
+          className={errors.subject ? styles.error : ''}
         />
-        <label htmlFor="textBody">Body</label>
+        {errors.subject && <p>{errors.subject}</p>}
+      </div>
+      <div>
+        <label>Email</label>
         <input
-          name="textBody"
-          value={textBody}
-          placeholder="Your text here"
-          onChange={onTextInputChange}
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className={errors.email ? styles.error : ''}
         />
-        <button>Submit</button>
-      </form>
-    </div>
+        {errors.email && <p>{errors.email}</p>}
+      </div>
+      <div>
+        <label>Body</label>
+        <textarea
+          name="body"
+          value={formData.body}
+          onChange={handleChange}
+          className={errors.body ? styles.error : ''}
+        />
+        {errors.body && <p>{errors.body}</p>}
+      </div>
+      <div className='btn-wrap'>
+      <button type="submit">Submit</button>
+      </div>
+    </form>
+    </>
   );
-}
+};
 
-export default App;
+export default ContactForm;
