@@ -26,20 +26,25 @@ function Post() {
   console.log("Is Loading:", isLoading);
 
   return (
-    <div className="mainContainer">
-      <div className="box">
-        <div className="card">
+    <div className="prodContainer">
+      <div className="prodBox">
+        <div className="prodCard">
+          <div>
+          <h1>{data.title}</h1>
           <img src={data.image.url} alt={data.image.alt || data.title} className="image" />
-          <h2>{data.title}</h2>
+          </div>
+          <div>
           <p>{data.description}</p>
           <p>Price: ${data.price.toFixed(2)}</p>
           <p>Discounted Price: ${data.discountedPrice.toFixed(2)}</p>
           <p>Rating: {data.rating}</p>
-          <ul>
+          <p className="tags">Tags:
             {data.tags.map((tag, index) => (
-              <li key={index}>{tag}</li>
+              <p key={index}>{tag}</p>
             ))}
-          </ul>
+          </p>
+          </div>
+          <div>
           {data.reviews.length > 0 && (
             <div>
               <h3>Reviews:</h3>
@@ -52,8 +57,11 @@ function Post() {
               </ul>
             </div>
           )}
+          </div>
         </div>
+            <div className="btn-wrap">
             <button className="btn">Add to cart</button>
+            </div>
       </div>
     </div>
   );
