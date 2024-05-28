@@ -35,10 +35,6 @@ code {
   transform: scale(1.1);
 }
 
-.box:hover .image {
-  border-radius: 50%;
-}
-
 .mainContainer .card {
   padding: 15px 15px 0;
 }
@@ -50,7 +46,7 @@ code {
   background: #f9f9f9;
   margin: 10px auto 25px;
   position: relative;
-  /* border-radius: 50%; */
+  border-radius: 50%;
 }
 
 .btn {
