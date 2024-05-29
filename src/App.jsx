@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import Post from './pages/ProductPage';
 import Navbar from './components/Header';
 import Footer from './components/Footer';
+import Success from './pages/CheckoutSuccessPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/Contact' element={<Contact />} />
           <Route path='/Checkout' element={<Cart />} />
           <Route path='/post/:id' element={<Post />} />
+          <Route path='/Success' element={<Success />} />
           <Route path='*' element={<h1>Page not found</h1>} />
         </Routes>
       </div>
