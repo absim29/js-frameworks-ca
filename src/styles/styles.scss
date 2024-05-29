@@ -27,6 +27,9 @@ body {
   align-items: stretch;
   gap: 2rem;
   padding: 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .nav ul {
@@ -194,13 +197,21 @@ h1{
   border-radius: 15px;
 }
 
-.btn:hover {
+.btn:hover, .checkout-btn:hover {
   background-color: $dark-blue;
   color: white;
 }
 
 .btn-wrap{
   text-align: center;
+}
+.checkout-btn{
+  padding: 12px 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: $bg-color;
+  border-color: $dark-blue;
+  border-radius: 15px;
 }
 
 

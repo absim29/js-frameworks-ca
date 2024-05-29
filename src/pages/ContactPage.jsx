@@ -50,6 +50,7 @@ function ContactForm() {
   return (
     <>
     <h1>Contact us</h1>
+    <div className='prodContainer'>
     <form onSubmit={handleSubmit} className={styles.form}>
       <div>
         <label>Full Name</label>
@@ -98,6 +99,7 @@ function ContactForm() {
       <button type="submit">Submit</button>
       </div>
     </form>
+    </div>
     </>
   );
 };
