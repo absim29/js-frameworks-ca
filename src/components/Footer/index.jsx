@@ -13,7 +13,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer-container">
 
-                <div className="item2">
+                <div className="copyright">
                     <span style={{ paddingRight: 5 }}>Copyright </span>
                     <FontAwesomeIcon icon={faCopyright} />{" "}
                     <span style={{ paddingLeft: 5 }}>
@@ -25,21 +25,21 @@ const Footer = () => {
                 <Link
                     to="https://instagram"
                     target="_blank"
-                    className="item3"
+                    className="social"
                 >
                     <FontAwesomeIcon icon={faInstagram} />
                 </Link>
                 <Link
                     href="http://fb.com/sudiptob2"
                     target="_blank"
-                    className="item4"
+                    className="social"
                 >
                     <FontAwesomeIcon icon={faFacebook} />
                 </Link>
                 <Link
                     href="https://www.youtube.com/"
                     target="_blank"
-                    className="item5"
+                    className="social"
                 >
                     <FontAwesomeIcon icon={faYoutube} />
                 </Link>
