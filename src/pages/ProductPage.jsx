@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useFetchSingle } from "../hooks/useFetchSingle";
 import StarRating from "../components/StarRating";
+import calculateDiscount from "../components/Discount";
 
 const url = 'https://v2.api.noroff.dev/online-shop';
 
@@ -22,9 +23,7 @@ function Post() {
     return <div>No data found</div>;
   }
 
-  const discount = data.price > data.discountedPrice 
-    ? Math.ceil(((data.price - data.discountedPrice) / data.price) * 100) 
-    : 0;
+  const discount = calculateDiscount(data.price, data.discountedPrice);
 
   return (
     <div className="prodContainer">
@@ -42,7 +41,7 @@ function Post() {
               <p className="newprice">New Price: ${data.discountedPrice.toFixed(2)}</p>
               <p className="discount">Discount: - {discount}%</p>
             </>
-            ) : (<p className="price">Price: ${data.price.toFixed(2)}</p>)}
+            ) : (<p className="newprice">Price: ${data.price.toFixed(2)}</p>)}
           
           <p>Rating: <StarRating rating={data.rating} /></p>
           <p className="tags">Tags:
