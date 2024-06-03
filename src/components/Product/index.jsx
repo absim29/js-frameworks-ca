@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../context/Shop';
 
 const Product = ({ item }) => {
+
+  const { addToCart } = useCart();
+
   return (
     <div className="box">
       <div className="card">
@@ -15,6 +19,7 @@ const Product = ({ item }) => {
           <Link to={`/post/${item.id}`}>
             <button className="btn">View</button>
           </Link>
+          <button className="btn" onClick={() => addToCart(item)}>Buy</button>
         </div>
       </div>
     </div>

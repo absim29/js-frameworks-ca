@@ -2,14 +2,16 @@ import { useParams } from "react-router-dom";
 import { useFetchSingle } from "../hooks/useFetchSingle";
 import StarRating from "../components/StarRating";
 import calculateDiscount from "../components/Discount";
+import { useCart } from "../context/Shop";
 
 const url = 'https://v2.api.noroff.dev/online-shop';
 
 function Post() {
   let { id } = useParams();
-  console.log(id);
 
   const { data, isError, isLoading } = useFetchSingle(url, id);
+
+  const { addToCart } = useCart();
 
   if (isLoading) {
     return <div>Loading posts...</div>;
@@ -44,11 +46,11 @@ function Post() {
             ) : (<p className="newprice">Price: ${data.price.toFixed(2)}</p>)}
           
           <p>Rating: <StarRating rating={data.rating} /></p>
-          <p className="tags">Tags:
+          <div className="tags">Tags:
             {data.tags.map((tag, index) => (
               <p key={index}>#{tag}</p>
             ))}
-          </p>
+          </div>
           </div>
           <div>
           {data.reviews.length > 0 && (
@@ -66,7 +68,7 @@ function Post() {
           </div>
         </div>
             <div className="btn-wrap">
-            <button className="btn">Add to cart</button>
+              <button className="btn" onClick={() => addToCart(data)}>Add to Cart</button>
             </div>
       </div>
     </div>
