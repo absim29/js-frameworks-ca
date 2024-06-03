@@ -6,10 +6,11 @@ import { Route, Routes } from 'react-router-dom';
 import Post from './pages/ProductPage';
 import Success from './pages/CheckoutSuccessPage';
 import Layout from './components/Layout';
+import { CartProvider } from './context/Shop';
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <Layout>
       <div className='container'>
         <Routes>
@@ -22,7 +23,7 @@ function App() {
         </Routes>
       </div>
       </Layout>
-    </>
+    </CartProvider>
   );
 }
 
