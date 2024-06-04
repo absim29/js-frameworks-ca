@@ -27,7 +27,7 @@ export default function CartComponent() {
       
         {cart.length === 0 ? (
           <>
-            <p>Your cart is empty</p>
+            <p>It looks like you haven't added anything to your cart yet.</p>
             <Link to={"/"}>
               <button className="checkout-btn">Continue Shopping</button>
             </Link>

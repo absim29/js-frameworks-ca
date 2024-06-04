@@ -19,7 +19,7 @@ export default function Navbar() {
       <li><NavLink to="/" className={({ isActive }) => (isActive ? 'li active' : 'li')}>Home</NavLink> </li>
       <li><NavLink to="/Contact">Contact</NavLink></li>
       <li>
-          <NavLink to="/Checkout">
+          <NavLink to="/Cart">
             <div className="cart-icon">
               <FontAwesomeIcon icon={faShoppingCart} />
                 {totalItems > 0 && <div className="cart-overlay">{totalItems}</div>}

@@ -58,9 +58,9 @@ function Post() {
               <h3>Reviews:</h3>
               <ul>
                 {data.reviews.map((review) => (
-                  <li key={review.id}>
+                  <p key={review.id}>
                     <strong>{review.username}:</strong> {review.description} (Rating: {review.rating})
-                  </li>
+                  </p>
                 ))}
               </ul>
             </div>

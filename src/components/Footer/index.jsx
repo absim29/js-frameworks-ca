@@ -23,14 +23,14 @@ const Footer = () => {
                 </div>
                 <div className="social-icons">
                 <Link
-                    to="https://instagram"
+                    to="https://www.instagram.com"
                     target="_blank"
                     className="social"
                 >
                     <FontAwesomeIcon icon={faInstagram} />
                 </Link>
                 <Link
-                    href="http://fb.com/sudiptob2"
+                    href="https://www.facebook.com/"
                     target="_blank"
                     className="social"
                 >

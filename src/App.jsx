@@ -16,10 +16,17 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/Contact' element={<Contact />} />
-          <Route path='/Checkout' element={<Cart />} />
+          <Route path='/Cart' element={<Cart />} />
           <Route path='/post/:id' element={<Post />} />
           <Route path='/Success' element={<Success />} />
-          <Route path='*' element={<h1>Page not found</h1>} />
+          <Route path='*' element={
+            <>
+              <h1>Page not found</h1>
+              <div className="prodContainer">
+                <p>We’re sorry, but the page you are looking for doesn’t exist.</p>
+                <p>It might have been moved or deleted, or perhaps the URL is incorrect.</p>
+              </div>
+            </>} />
         </Routes>
       </div>
       </Layout>
