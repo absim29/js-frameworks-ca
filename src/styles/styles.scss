@@ -2,7 +2,9 @@
 
 $bg-color: #F5E9E2;
 $dark-blue: #23395B;
+$light-blue: #3e65a2;
 $light: white;
+$grey: #f9f9f9;
 
 * {
   box-sizing: border-box;
@@ -53,7 +55,7 @@ body {
 }
 
 .active {
-  background-color: #3e65a2;
+  background-color: $light-blue;
 }
 
 .nav li:hover {
@@ -95,7 +97,10 @@ h1{
 
 
 //**********MAIN-CONTAINERS**********
-
+.mainContainer a {
+  text-decoration: none;
+  color: black;
+}
 .mainContainer {
   width: 100%;
   min-height: 100vh;
@@ -128,13 +133,14 @@ h1{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .card .image {
   width: 90%;
   height: 300px;
   object-fit: cover;
-  background: #f9f9f9;
+  background: $grey;
   margin: 10px auto 25px;
   position: relative;
   border-radius: 50%;
@@ -174,7 +180,7 @@ h1{
   width: 100%;
   height: 50vh;
   object-fit: cover;
-  background: #f9f9f9;
+  background: $grey;
   margin: 10px auto 25px;
   position: relative;
   // border-radius: 50%;
@@ -201,8 +207,7 @@ h1{
 
 //**********BUTTONS**********
 
-.btn {
-  width: 50%;
+.btn, .checkout-btn,.remove-btn {
   padding: 12px 24px;
   font-weight: 600;
   text-transform: uppercase;
@@ -216,22 +221,30 @@ h1{
   color: $light;
 }
 
+.btn:active, .checkout-btn:active {
+  background-color: $light-blue;
+}
+
 .btn-wrap{
   text-align: center;
 }
-.checkout-btn{
-  padding: 12px 24px;
-  font-weight: 600;
-  text-transform: uppercase;
-  background-color: $bg-color;
-  border-color: $dark-blue;
-  border-radius: 15px;
+
+.remove-btn{
+  color: red;
+  font-weight: 100;
+  font-size: 10px;
+  margin: 10px;
 }
+.remove-btn:hover{
+  background-color: red;
+  color: $light;
+}
+
 
 //**********SEARCHBAR**********
 
 .input-wrapper {
-  background-color: #f9f9f9;
+  background-color: $grey;
   border-radius: 5px;
   height: 2rem;
   padding: 0 5px;
@@ -275,7 +288,70 @@ h1{
 }
 .results-list a:hover{
   background-color: #5b83c0;
+  color: $light;
 }
+
+
+
+//**********CART**********
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-overlay {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: red;
+  color: $light;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  background-color: lighten($bg-color, 2%);
+  border-radius: 2%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-image {
+  height: 100%;
+  max-height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+.prodContainer ul {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding: 0;
+  
+}
+ .cart-details{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.counter{
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+}
+.img-wrapper{
+  display: flex;
+}
+
 
 
 //**********SCREEN SIZES**********
@@ -312,6 +388,23 @@ h1{
   }
 }
 
+@media screen and (max-width:650px) {
+  .cart-details{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+    gap: 20px;
+  }
+  .cart-image{
+    width: 150px;
+  }
+  .cart-item{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
 @media screen and (max-width:500px) {
   .mainContainer {
     grid-template-columns: repeat(1, 1fr);
@@ -331,5 +424,12 @@ h1{
   }
   .copyright{
     font-size: 0.8rem;
+  }
+  .cart-item{
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+  .cart-image{
+    width: 350px;
   }
 }
