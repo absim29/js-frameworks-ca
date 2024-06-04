@@ -51,6 +51,7 @@ function ContactForm() {
     <>
     <h1>Contact us</h1>
     <div className='prodContainer'>
+    <p>If you have any questions or need further assistance, please don't hesitate to contact us by using the form below.</p>
     <form onSubmit={handleSubmit} className={styles.form}>
       <div>
         <label>Full Name</label>
