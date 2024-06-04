@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/Shop";
+import { Button, TextField } from "@mui/material";
+
 
 export default function CartComponent() {
   const { cart, removeFromCart, clearCart, incrementQuantity, decrementQuantity } = useCart();
@@ -22,7 +24,7 @@ export default function CartComponent() {
 
   return (
     <>
-      <div className="prodContainer">
+      
         {cart.length === 0 ? (
           <>
             <p>Your cart is empty</p>
@@ -34,24 +36,32 @@ export default function CartComponent() {
           <>
             <ul>
               {cart.map((item) => (
-                <li key={item.id}>
-                  <img src={item.image.url} alt={item.image.alt || item.title} className="image" />
-                  {item.title} - ${item.discountedPrice.toFixed(2)}
-                  <button onClick={() => handleDecrement(item.id)}>-</button>
-                  <input value={item.quantity} />
-                  <button onClick={() => handleIncrement(item.id)}>+</button>
-                  <button onClick={() => handleRemove(item.id)}>Remove</button>
-                </li>
+                <div className="cart-item" key={item.id}>
+                  <div className="img-wrapper">
+                    <img src={item.image.url} alt={item.image.alt || item.title} className="cart-image" />
+                  </div>
+                    <p>{item.title} - <strong>${item.discountedPrice.toFixed(2)}</strong></p>
+                  <div className="cart-details">
+                    
+                      <div className="counter">
+                        <Button onClick={() => handleDecrement(item.id)}>-</Button>
+                        <TextField value={item.quantity} />
+                        <Button onClick={() => handleIncrement(item.id)}>+</Button>
+                      </div>
+                   
+                    <button className="remove-btn" onClick={() => handleRemove(item.id)}>Remove</button>
+                  </div>
+                </div>
               ))}
             </ul>
-            <p>Total Items: {totalItems}</p>
-            <p>Total: ${totalPrice.toFixed(2)}</p>
+    
+            <h3>Total ({totalItems} items) : ${totalPrice.toFixed(2)}</h3>
             <Link to={"/Success"} onClick={clearCart}>
               <button className="checkout-btn">Checkout</button>
             </Link>
           </>
         )}
-      </div>
+     
     </>
   );
 }
