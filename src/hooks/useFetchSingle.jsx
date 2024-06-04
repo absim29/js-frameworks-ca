@@ -6,7 +6,6 @@ function useFetchSingle(apiUrl, id) {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-
     const controller = new AbortController();
     const signal = controller.signal;
 
@@ -17,12 +16,12 @@ function useFetchSingle(apiUrl, id) {
       try {
         const response = await fetch(url, { signal });
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const result = await response.json();
         setData(result.data);
       } catch (error) {
-        if (error.name !== 'AbortError') {
+        if (error.name !== "AbortError") {
           setIsError(true);
         }
       }
@@ -38,8 +37,10 @@ function useFetchSingle(apiUrl, id) {
   }, [apiUrl, id]);
 
   return {
-    data, isLoading, isError,
-  }
-};
+    data,
+    isLoading,
+    isError,
+  };
+}
 
 export { useFetchSingle };

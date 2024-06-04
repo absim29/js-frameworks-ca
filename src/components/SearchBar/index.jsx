@@ -4,14 +4,14 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useFetch } from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 
-const url = 'https://v2.api.noroff.dev/online-shop';
+const url = "https://v2.api.noroff.dev/online-shop";
 
 const SearchBar = () => {
   const { data, isLoading, isError } = useFetch(url);
   const [searchQuery, setSearchQuery] = useState("");
   const searchWrapperRef = useRef(null);
 
-  const filteredData = data.filter(item =>
+  const filteredData = data.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -20,7 +20,10 @@ const SearchBar = () => {
   };
 
   const handleClickOutside = (event) => {
-    if (searchWrapperRef.current && !searchWrapperRef.current.contains(event.target)) {
+    if (
+      searchWrapperRef.current &&
+      !searchWrapperRef.current.contains(event.target)
+    ) {
       setSearchQuery("");
     }
   };

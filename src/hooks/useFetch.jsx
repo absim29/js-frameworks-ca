@@ -17,7 +17,7 @@ function useFetch(apiUrl) {
       try {
         const response = await fetch(url);
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const result = await response.json();
         setData(result.data);
@@ -32,8 +32,10 @@ function useFetch(apiUrl) {
   }, [apiUrl]);
 
   return {
-    data, isLoading, isError,
-  }
-};
+    data,
+    isLoading,
+    isError,
+  };
+}
 
 export { useFetch };

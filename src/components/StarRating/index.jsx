@@ -1,5 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faStarHalfAlt, faStar as farStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faStar,
+  faStarHalfAlt,
+  faStar as farStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const StarRating = ({ rating }) => {
   const fullStars = Math.floor(rating);

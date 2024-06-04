@@ -3,8 +3,8 @@ $input-padding: 10px;
 $input-border: 1px solid #ccc;
 $input-border-radius: 5px;
 $error-color: #e74c3c;
-$dark-blue: #23395B;
-$bg-color: #F5E9E2;
+$dark-blue: #23395b;
+$bg-color: #f5e9e2;
 
 form {
   width: $form-width;
@@ -48,12 +48,12 @@ form {
     padding: 12px 24px;
     font-weight: 600;
     text-transform: uppercase;
-    background-color: #F5E9E2;
+    background-color: #f5e9e2;
     border-color: $dark-blue;
     border-radius: 15px;
 
     &:hover {
-      background-color: #23395B;
+      background-color: #23395b;
       color: white;
     }
   }
@@ -64,5 +64,3 @@ form {
     font-size: 14px;
   }
 }
-
-
